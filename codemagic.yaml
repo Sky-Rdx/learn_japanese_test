@@ -1,4 +1,3 @@
-# refresh for codemagic
 workflows:
   build_apk:
     name: Build Learn Japanese APK
@@ -9,11 +8,10 @@ workflows:
       - name: Unzip project
         script: |
           unzip learn_japanese_test.zip -d learn_japanese_test
-          cd learn_japanese_test
       - name: Build APK
         script: |
           cd learn_japanese_test
           flutter pub get
           flutter build apk --release
     artifacts:
-      - build/app/outputs/flutter-apk/app-release.apk
+      - learn_japanese_test/build/app/outputs/flutter-apk/app-release.apk
