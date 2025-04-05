@@ -1,17 +1,13 @@
 workflows:
   build_apk:
     name: Build Learn Japanese APK
-    max_build_duration: 30
+    max_build_duration: 20
     environment:
       flutter: stable
     scripts:
-      - name: Unzip project
-        script: |
-          unzip learn_japanese_test.zip -d learn_japanese_test
+      - name: Get dependencies
+        script: flutter pub get
       - name: Build APK
-        script: |
-          cd learn_japanese_test
-          flutter pub get
-          flutter build apk --release
+        script: flutter build apk --release
     artifacts:
-      - learn_japanese_test/build/app/outputs/flutter-apk/app-release.apk
+      - build/app/outputs/flutter-apk/app-release.apk
